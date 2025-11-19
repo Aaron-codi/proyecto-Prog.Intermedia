@@ -76,13 +76,13 @@ function mostrarAutores($conexion, $consulta) {
  */
 function eliminarAutor($conexion, $id_autor) {
 
-    $consulta = "SELECT nombre, apellido FROM Autor WHERE id_autor = $id_autor";
+    $consulta = "SELECT nombre, apellido FROM autor WHERE id_autor = $id_autor";
     $resultado = mysqli_query($conexion, $consulta);
 
     if ($resultado && mysqli_num_rows($resultado) > 0) {
         $autor = mysqli_fetch_assoc($resultado);
 
-        $delete = "DELETE FROM Autor WHERE id_autor = $id_autor";
+        $delete = "DELETE FROM autor WHERE id_autor = $id_autor";
         if (mysqli_query($conexion, $delete)) {
             return "<p>✅ Autor <strong>{$autor['nombre']} {$autor['apellido']}</strong> (ID $id_autor) eliminado correctamente.</p>";
         } else {
@@ -98,7 +98,7 @@ function eliminarAutor($conexion, $id_autor) {
  */
 function actualizarAutor($conexion, $id_autor, $nombre, $apellido, $nacionalidad, $fecha_nacimiento) {
 
-    $sql = "UPDATE Autor 
+    $sql = "UPDATE autor 
             SET nombre='$nombre', apellido='$apellido', 
                 nacionalidad='$nacionalidad', fecha_nacimiento='$fecha_nacimiento'
             WHERE id_autor=$id_autor";

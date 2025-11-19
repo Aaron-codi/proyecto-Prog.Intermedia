@@ -1,11 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <title>Actualizar Autor</title>
 </head>
 <body>
-
 <?php
 // Conexión con la BD (modo procedimental)
 require_once "../../conexion/conexion.php";
@@ -31,7 +30,7 @@ $autor = null;
 if (isset($_POST['buscar'])) {
     $id_autor = intval($_POST['id_autor']);
 
-    $sql = "SELECT * FROM Autor WHERE id_autor = $id_autor";
+    $sql = "SELECT * FROM autor WHERE id_autor = $id_autor";
     $resultado = mysqli_query($conexion, $sql);
 
     if ($resultado && mysqli_num_rows($resultado) > 0) {
@@ -57,7 +56,7 @@ mysqli_close($conexion);
 
 <?php if (is_array($autor)) { ?>
 <!-- Formulario de actualización -->
-<form method="POST" action="../controller/actualizarAutor.php">
+<form method="POST" action="../controllerAutor/actualizar.php">
     <input type="hidden" name="id_autor" value="<?php echo $autor['id_autor']; ?>">
 
     <label>Nombre:</label>
